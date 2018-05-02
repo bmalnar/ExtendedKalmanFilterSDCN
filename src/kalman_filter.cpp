@@ -18,10 +18,14 @@ void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in,
   x_ = x_in;
   P_ = P_in;
   F_ = F_in;
-  H_ = H_in;
-  R_ = R_in;
-  R_ekf_ = R_ekf_in;
   Q_ = Q_in;
+
+  // H is the measurement function of the laser
+  H_ = H_in;
+  // R_ is the measurement noise of the laser
+  R_ = R_in;
+  // R_ekf_ is the measurement noise of the radar
+  R_ekf_ = R_ekf_in;
 }
 
 void KalmanFilter::Predict() {

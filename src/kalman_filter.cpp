@@ -20,6 +20,9 @@ void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in,
   F_ = F_in;
   Q_ = Q_in;
 
+  long x_size = x_.size();
+  I_ = MatrixXd::Identity(x_size, x_size);
+
   // H is the measurement function of the laser
   H_ = H_in;
   // R_ is the measurement noise of the laser
@@ -75,11 +78,7 @@ void KalmanFilter::Update(const VectorXd &z) {
   x_ = x_ + (K * y);
   Tools::PrintDebugVector("x_", x_);
 
-  long x_size = x_.size();
-  MatrixXd I = MatrixXd::Identity(x_size, x_size);
-  Tools::PrintDebugMatrix("I", I);
-
-  P_ = (I - K * H_) * P_;
+  P_ = (I_ - K * H_) * P_;
   Tools::PrintDebugMatrix("P_", P_);
 
   Tools::PrintDebug("Exit Update()");
@@ -120,11 +119,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   x_ = x_ + (K * y);
   Tools::PrintDebugVector("x_", x_);
 
-  long x_size = x_.size();
-  MatrixXd I = MatrixXd::Identity(x_size, x_size);
-  Tools::PrintDebugMatrix("I", I);
-
-  P_ = (I - K * Hj) * P_;
+  P_ = (I_ - K * Hj) * P_;
   Tools::PrintDebugMatrix("P_", P_);
 
   Tools::PrintDebug("Exit UpdateEKF()");

@@ -24,6 +24,9 @@ public:
   Eigen::MatrixXd R_;
   Eigen::MatrixXd R_ekf_;
 
+  // Identity matrix
+  Eigen::MatrixXd I_;
+
   /**
    * Constructor
    */

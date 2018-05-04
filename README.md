@@ -7,7 +7,7 @@ This repository contains implementation of a Kalman filter for estimating the lo
 ### Data file 
 The data file is provided by Udacity and contains the lidar and radar measurements in a text format. The screenshot of the portion of the file can be seen in the following picture:
 
-<img src="images/data_file_screenshot.png" width="480" alt="Data File Screenshot" />
+<img src="images/data_file_screenshot.png" width="700" alt="Data File Screenshot" />
 
 As explained on the Udacity's original project github, each row represents a sensor measurement where the first column tells you if the measurement comes from radar (R) or lidar (L). For a row containing radar data, the columns are: **sensor_type, rho_measured, phi_measured, rhodot_measured, timestamp, x_groundtruth, y_groundtruth, vx_groundtruth, vy_groundtruth, yaw_groundtruth, yawrate_groundtruth**. For a row containing lidar data, the columns are: **sensor_type, x_measured, y_measured, timestamp, x_groundtruth, y_groundtruth, vx_groundtruth, vy_groundtruth, yaw_groundtruth, yawrate_groundtruth**.
 
@@ -22,9 +22,9 @@ We have the following C++ source files in the _src_ directory of the repository:
 - tools.cpp - This file contains helper functions for printing debug messages, for calculating the Jacobian matrix, the radar function, and the RMSE value in each step. 
 
 ### Output from the program
-The output of the program in the text format is stored in the file _outputlog.txt_. It shows the values of the state vector and the uncertainty covariance in each step, and can be used for debugging. The following image shows the screenshot of the simulator at the end of the run, and we can see that the goal in terms of the RMSE values for all values in the state vector is met. 
+The output of the program in the text format is stored in the file _outputlog.txt_. It shows the values of the state vector and the uncertainty covariance in each step, and can be used for debugging. The following image shows the screenshot of the simulator at the end of the run. We observe the RMSE values to be **(0.0971, 0.0857, 0.4521, 0.4458)**, meaning that the goal of the project, as described above, is met. 
 
-<img src="images/simulator_screenshot.png" width="480" alt="Data File Screenshot" />
+<img src="images/simulator_screenshot.png" width="700" alt="Data File Screenshot" />
  
 ### How to run the program
 After cloning this repository, simply execute the following commands to build and run the program:
